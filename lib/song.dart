@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library chordpro;
 
-export 'src/chordpro_base.dart';
+export 'src/song.dart';
 
 // TODO: Export any libraries intended for clients of this package.
