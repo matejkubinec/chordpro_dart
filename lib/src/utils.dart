@@ -15,7 +15,8 @@ class Utils {
   }
 
   static List<String> getSections(String content) {
-    final regex = RegExp(r'\{start_of(.|\n)*?\{end_of_.*\}$', multiLine: true);
+    final regex =
+        RegExp(r'\{start_of(.|\n|\r\n)*?\{end_of_.*\}$', multiLine: true);
     final matches = regex.allMatches(content);
     final sections = matches.map((match) => match[0].toString());
 

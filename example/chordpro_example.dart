@@ -1,4 +1,4 @@
-import 'package:chordpro/song.dart';
+import 'package:chordpro/chordpro.dart';
 
 void main() {
   final content = """
