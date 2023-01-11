@@ -1,14 +1,20 @@
 import 'dart:convert';
 
+import 'constants.dart';
 import 'utils.dart';
 
 class Metadata {
   String? title;
   String? artist;
+  bool hasChordsOverLyrics = false;
 
   static Metadata fromChordpro(String content) {
     final lines = LineSplitter().convert(content);
     final metadata = Metadata();
+
+    if (content.contains(CHORDS_OVER_LYRIC_DIRECTIVE)) {
+      metadata.hasChordsOverLyrics = true;
+    }
 
     for (var line in lines) {
       if (Utils.isDirective(line, 'artist')) {
