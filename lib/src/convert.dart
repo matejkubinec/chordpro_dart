@@ -18,12 +18,15 @@ String convertToChordInLyric(String content) {
 
       if (chordLine.length > lyricLine.length) {
         final shorter = pairs.where((p) => p.idx < lyricLine.length).toList();
-        final longerIndices = pairs.where((p) => p.idx >= lyricLine.length);
-        final splitIdx = longerIndices.first.idx;
+        final longerIndices =
+            pairs.where((p) => p.idx >= lyricLine.length).toList();
+        final splitIdx = longerIndices.isEmpty ? -1 : longerIndices.first.idx;
 
         lyricLine = lyricLine.padRight(chordLine.length);
-        lyricLine =
-            lyricLine.substring(0, splitIdx) + chordLine.substring(splitIdx);
+        if (splitIdx != -1) {
+          lyricLine =
+              lyricLine.substring(0, splitIdx) + chordLine.substring(splitIdx);
+        }
 
         var offset = 0;
         for (var pair in shorter) {
